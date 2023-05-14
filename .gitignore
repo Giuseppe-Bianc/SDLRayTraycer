@@ -363,11 +363,10 @@ MigrationBackup/
 FodyWeavers.xsd
 /external/glm/doc
 /external/glm/cmake/glm
-/external/SDL2-2.26.5/cmake
-/external/SDL2-2.26.5/docs
-/external/SDL2-2.26.5/BUGS.txt
-/external/SDL2-2.26.5/WhatsNew.txt
-/external/SDL2-2.26.5/README.txt
-/external/SDL2-2.26.5/README-SDL.txt
-/external/SDL2-2.26.5/COPYING.txt
+/external/SDL2/cmake
 /external/SDL2/docs
+/external/SDL2/BUGS.txt
+/external/SDL2/WhatsNew.txt
+/external/SDL2/README.txt
+/external/SDL2/README-SDL.txt
+/external/SDL2/COPYING.txt
