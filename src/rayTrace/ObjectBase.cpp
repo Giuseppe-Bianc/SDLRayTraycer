@@ -8,6 +8,10 @@ bool SDLRT::ObjectBase::TestIntersection(const Ray &castRay, glm::dvec3 &intPoin
 	return false;
 }
 
+void SDLRT::ObjectBase::SetTransformMatrix(const GTform& transformMatrix){
+	m_transformMatrix = transformMatrix;
+}
+
 // Function to test whether two floating-point numbers are close to being equal.
 bool SDLRT::ObjectBase::CloseEnough(const double f1, const double f2)
 {

@@ -3,8 +3,10 @@
 
 // Function to test for intersections.
 bool SDLRT::ObjSphere::TestIntersection(const SDLRT::Ray &castRay, glm::dvec3 &intPoint, glm::dvec3 &localNormal, glm::dvec3 &localColor) {
+	Ray bck = m_transformMatrix.Apply(castRay, SDLRT
+	::BCKTF);
 	// Compute the values of a, b and c.
-	glm::dvec3 vhat = castRay.m_lab;
+	glm::dvec3 vhat = bck.m_lab;
 	vhat = glm::normalize(vhat);
 	
 	/* Note that a is equal to the squared magnitude of the
@@ -13,14 +15,14 @@ bool SDLRT::ObjSphere::TestIntersection(const SDLRT::Ray &castRay, glm::dvec3 &i
 	// a = 1.0;
 	
 	// Calculate b.
-	double b = 2.0 * glm::dot(castRay.m_point1, vhat);
+	double b = 2.0 * glm::dot(bck.m_point1, vhat);
 	
 	// Calculate c.
-	double c = glm::dot(castRay.m_point1, castRay.m_point1) - 1.0;
+	double c = glm::dot(bck.m_point1, bck.m_point1) - 1.0;
 	
 	// Test whether we actually have an intersection.
 	double intTest = (b*b) - 4.0 * c;
-	
+	glm::dvec3 poi{};
 	if (intTest > 0.0) {
 		double numSQRT = sqrt(intTest);
 		double t1 = (-b + numSQRT) / 2.0;
@@ -33,15 +35,19 @@ bool SDLRT::ObjSphere::TestIntersection(const SDLRT::Ray &castRay, glm::dvec3 &i
 		} else {
 			// Determine which point of intersection was closest to the camera.
 			if (t1 < t2) {
-				intPoint = castRay.m_point1 + (vhat * t1);
+				poi = bck.m_point1 + (vhat * t1);
 			} else {
-				intPoint = castRay.m_point1 + (vhat * t2);
+				poi = bck.m_point1 + (vhat * t2);
 			}
+
+			intPoint = m_transformMatrix.Apply(poi, SDLRT::FWDTF);
 			
 			// Compute the local normal (easy for a sphere at the origin!).
-			localNormal = intPoint;
+			glm::dvec3 objOrigin{};
+			glm::dvec3 newObjOrigin = m_transformMatrix.Apply(objOrigin, SDLRT::FWDTF);
+			localNormal = intPoint - newObjOrigin;
 			localNormal = glm::normalize(localNormal);
-			
+			localColor = m_baseColor;
 		}
 		
 		return true;

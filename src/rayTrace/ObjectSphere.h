@@ -1,6 +1,7 @@
 #pragma once
 #include "headers.h"
 #include "ObjectBase.h"
+#include "Gtfm.h"
 
 namespace SDLRT
 {
@@ -15,7 +16,7 @@ namespace SDLRT
 			virtual ~ObjSphere() noexcept override = default;
 			
 			// Override the function to test for intersections.
-			virtual bool TestIntersection(const SDLRT::Ray &castRay, glm::dvec3 &intPoint, glm::dvec3 &localNormal, glm::dvec3 &localColor);
+			virtual bool TestIntersection(const SDLRT::Ray &castRay, glm::dvec3 &intPoint, glm::dvec3 &localNormal, glm::dvec3 &localColor) override;
 			
 		private:
 		
