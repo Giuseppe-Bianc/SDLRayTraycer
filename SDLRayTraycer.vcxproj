@@ -171,6 +171,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\rayTrace\Gtfm.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\RayTracer.cpp" />
     <ClCompile Include="src\rayTrace\Camera.cpp" />
@@ -183,6 +184,7 @@
     <ClCompile Include="src\rayTrace\Scene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\rayTrace\Gtfm.h" />
     <ClInclude Include="src\RayTracer.h" />
     <ClInclude Include="src\rayTrace\Camera.h" />
     <ClInclude Include="src\rayTrace\headers.h" />

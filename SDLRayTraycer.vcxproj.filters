@@ -45,6 +45,9 @@
     <ClCompile Include="src\RayTracer.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
+    <ClCompile Include="src\rayTrace\Gtfm.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\rayTrace\Camera.h">
@@ -75,6 +78,9 @@
       <Filter>File di intestazione</Filter>
     </ClInclude>
     <ClInclude Include="src\RayTracer.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rayTrace\Gtfm.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
   </ItemGroup>
