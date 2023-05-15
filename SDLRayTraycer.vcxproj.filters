@@ -86,5 +86,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="SDL2.dll" />
+    <None Include=".gitattributes" />
+    <None Include=".gitignore" />
+    <None Include="LICENSE" />
+    <None Include="README.md" />
+    <None Include="SECURITY.md" />
   </ItemGroup>
 </Project>
