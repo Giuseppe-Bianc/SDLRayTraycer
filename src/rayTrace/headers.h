@@ -16,6 +16,8 @@
 #include <SDL.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/constants.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtx/string_cast.hpp>
 #include <glm/gtc/random.hpp>
 #include <string_view>
 #include <iostream>
@@ -24,21 +26,22 @@
 #include <memory>
 
 using ddvector = std::vector<std::vector<double>>;
-
-static constexpr double MAX_COLOR = 255.0;
-static constexpr double NO_COLOR = 0.0;
-static constexpr double EPSILON = 1e-22;
-// Dimensioni della finestra
-static constexpr unsigned int screenWidth = 1280;
-static constexpr unsigned int screenHeight = 720;
-//static constexpr unsigned long long int framebuffersize = static_cast<long long int>(screenWidth) * static_cast<long long int>(screenHeight);
-static constexpr unsigned int MaxColorValue = 255;
-static constexpr unsigned int DelayMilliseconds = 1;
-static constexpr std::string_view windowTitle = "Ray Tracer";
-static constexpr std::string_view errorMessage = "Errore durante l'inizializzazione di SDL: ";
-static constexpr std::string_view createWindowErrorMessage = "Errore durante la creazione della finestra: ";
-static constexpr std::string_view createRendererErrorMessage = "Errore durante la creazione dell' render: ";
-
+namespace SDLRT {
+	static constexpr bool FWDTF = true;
+	static constexpr bool BCKTF = false;
+	static constexpr double MAX_COLOR = 255.0;
+	static constexpr double NO_COLOR = 0.0;
+	static constexpr double EPSILON = 1e-22;
+	// Dimensioni della finestra
+	static constexpr unsigned int screenWidth = 1280;
+	static constexpr unsigned int screenHeight = 720;
+	static constexpr unsigned int MaxColorValue = 255;
+	static constexpr unsigned int DelayMilliseconds = 1;
+	static constexpr std::string_view windowTitle = "Ray Tracer";
+	static constexpr std::string_view errorMessage = "Errore durante l'inizializzazione di SDL: ";
+	static constexpr std::string_view createWindowErrorMessage = "Errore durante la creazione della finestra: ";
+	static constexpr std::string_view createRendererErrorMessage = "Errore durante la creazione dell' render: ";
+}
 #define CAST_U8(x) static_cast<Uint8>((x))
 #define CAST_I(x) static_cast<int>((x))
 #define CAST_ULLI(x) static_cast<long long int>((x))

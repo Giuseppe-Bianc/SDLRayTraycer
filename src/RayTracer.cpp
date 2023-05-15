@@ -30,23 +30,23 @@ RayTrace::RayTrace() noexcept : isRunning(true), pWindow(nullptr), pRenderer(nul
 bool RayTrace::OnInit()
 {
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
-		std::cout << errorMessage << SDL_GetError << std::endl;
+		std::cout << SDLRT::errorMessage << SDL_GetError << std::endl;
 		return false;
 	}
 	
-	pWindow = SDL_CreateWindow("RayTracer", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screenWidth, screenHeight, SDL_WINDOW_SHOWN);
+	pWindow = SDL_CreateWindow(SDLRT::windowTitle.data(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SDLRT::screenWidth, SDLRT::screenHeight, SDL_WINDOW_SHOWN);
 	
 	if (pWindow != nullptr)
 	{
 		pRenderer = SDL_CreateRenderer(pWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 		if (pRenderer == nullptr) {
-			std::cout << createRendererErrorMessage << SDL_GetError() << std::endl;
+			std::cout << SDLRT::createRendererErrorMessage << SDL_GetError() << std::endl;
 			OnExit();
 			return false;
 		}
 		
 		// Intialize the qbImage instance.
-		m_image.Initialize(screenWidth, screenHeight, pRenderer);
+		m_image.Initialize(SDLRT::screenWidth, SDLRT::screenHeight, pRenderer);
 		
 		// Set the background color to white.
 		SDL_SetRenderDrawColor(pRenderer, 255, 255, 255, 255);
@@ -133,7 +133,7 @@ void RayTrace::OnExit() noexcept
 
 // PRIVATE FUNCTIONS.
 void RayTrace::PrintVector(const glm::dvec3 &vec) {
-	PRINT(6, "Vector: (" << vec.x << ", " << vec.y << ", " << vec.z << ")");
+	PRINT(12, "Vector: "<< glm::to_string(vec) << "");
 }
 
 
